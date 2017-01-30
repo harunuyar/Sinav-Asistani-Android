@@ -56,6 +56,9 @@ public class ÖsymAdapter extends BaseAdapter {
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.date = (TextView) convertView.findViewById(R.id.date);
             holder.cb = (CheckBox) convertView.findViewById(R.id.checkBox);
+            holder.first = (TextView) convertView.findViewById(R.id.first);
+            holder.last = (TextView) convertView.findViewById(R.id.last);
+            holder.result = (TextView) convertView.findViewById(R.id.result);
             convertView.setTag(holder);
 
             holder.cb.setOnClickListener( new View.OnClickListener() {
@@ -73,6 +76,9 @@ public class ÖsymAdapter extends BaseAdapter {
         Exam exam = al.get(position);
         holder.name.setText(exam.getAd());
         holder.date.setText(exam.getSınavTarihi());
+        holder.first.setText(exam.getBaşvuruTarihiFirst());
+        holder.last.setText(exam.getBaşvuruTarihiLast());
+        holder.result.setText(exam.getSonuçTarihi());
         holder.cb.setChecked(exam.isSelected());
         holder.cb.setTag(exam);
 
@@ -82,6 +88,9 @@ public class ÖsymAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView name;
         TextView date;
+        TextView first;
+        TextView last;
+        TextView result;
         CheckBox cb;
     }
 

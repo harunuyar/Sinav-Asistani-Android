@@ -28,8 +28,8 @@ public class ÖsymParser {
                                 lastApp, 
                                 e.select("div.col-sm-2").get(2).text().split(" ")[0]));
             }
-        } catch (IOException ex) {
-            throw new Exception("Connection problem.");
+        } catch (Exception ex) {
+            throw ex;
         }
         
         return al;

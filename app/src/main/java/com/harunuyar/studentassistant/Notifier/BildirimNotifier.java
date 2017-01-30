@@ -1,11 +1,16 @@
 package com.harunuyar.studentassistant.Notifier;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 
 import com.harunuyar.studentassistant.MainActivity;
@@ -27,7 +32,7 @@ public class BildirimNotifier extends Notifier {
     }
 
     @Override
-    public void notifyUser(Object info) throws Exception {
+    public void notifyUser(@NonNull Object info) throws Exception {
         if (!(info instanceof Bildirim))
             throw new Exception("Nesne, bildirim tipinde değil.");
         else{
@@ -38,14 +43,17 @@ public class BildirimNotifier extends Notifier {
                 bildirim.setTexts(new String[]{"Bilinmeyen bildirim."});
             }
 
-                mBuilder.setContentTitle("Student Assistant");
+            mBuilder.setContentTitle("Sınav Asistanı");
             mBuilder.setContentText(bildirim.getTexts()[0]);
             mBuilder.setSmallIcon(R.drawable.today);
-
-            mBuilder.setColor(Color.BLACK);
+            mBuilder.setLargeIcon(BitmapFactory.decodeResource( context.getResources(), R.mipmap.ic_launcher));
+            mBuilder.setAutoCancel(true);
+            mBuilder.setDefaults(Notification.DEFAULT_LIGHTS);
+            mBuilder.setDefaults(Notification.DEFAULT_VIBRATE);
+            mBuilder.setDefaults(Notification.DEFAULT_SOUND);
 
             NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-            inboxStyle.setBigContentTitle("Student Assistant");
+            inboxStyle.setBigContentTitle("Sınav Asistanı");
             for (String s : bildirim.getTexts()) {
                 inboxStyle.addLine(s);
             }

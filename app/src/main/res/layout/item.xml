@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/checkBox"
-            android:checked="false" />
+            android:checked="false"
+            app:buttonTint="@android:color/white" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -24,13 +26,118 @@
             <TextView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:id="@+id/name" />
+                android:id="@+id/name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:id="@+id/date" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="İlk başvuru: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:text="Son başvuru: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:text="Sınav tarihi: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:text="Sonuç tarihi: "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/first"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/last"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/date"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/result"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="?attr/colorControlNormal"
+                        android:textAllCaps="false"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

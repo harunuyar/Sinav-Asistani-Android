@@ -1,37 +1,58 @@
-package com.harunuyar.studentassistant.Scheduler;
+package com.harunuyar.studentassistant.Receiver;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+
+import com.harunuyar.studentassistant.CsvHelper.CsvReader;
 import com.harunuyar.studentassistant.Notifier.Bildirim;
+import com.harunuyar.studentassistant.Notifier.BildirimNotifier;
 import com.harunuyar.studentassistant.Notifier.Notifier;
 import com.harunuyar.studentassistant.ÖsymHelper.Exam;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.TimerTask;
 
 /**
- * Created by Harun on 25.01.2017.
+ * Created by Harun on 26.01.2017.
  */
 
-public class MyTimerTask extends TimerTask {
-
-    private Notifier notifier;
-    private ArrayList<Exam> al;
-
-    public MyTimerTask(Notifier notifier, ArrayList<Exam> al){
-        this.al = al;
-        this.notifier = notifier;
-    }
+public class BildirimReceiver extends BroadcastReceiver {
+    Notifier notifier;
+    ArrayList<Exam> selectedExams;
 
     @Override
-    public void run(){
-        for (Exam e : al) {
+    public void onReceive(Context context, Intent intent) {
+        notifier = new BildirimNotifier(true, true, context);
+        selectedExams = new ArrayList<>();
+
+        try {
+            CsvReader csvReader = new CsvReader("sinavlar.csv", context);
+
+            String[] s;
+
+            while ((s = csvReader.readNext()) != null) {
+                Exam e = new Exam(s[0], s[1], s[2], s[3], s[4]);
+                e.setSelected(true);
+                selectedExams.add(e);
+            }
+
+            Toast.makeText(context, "Sınav Asistanı:\n" + selectedExams.size() + " sınav kontrol edildi.", Toast.LENGTH_SHORT).show();
+            //notifier.notifyUser(new Bildirim(new String[]{selectedExams.size() + " sınav kontrol edildi"}));
+        }
+        catch (Exception ex) { }
+
+        for (Exam e : selectedExams){
             notifyIfClose(e);
         }
-        System.out.println("Kontrol edildi.");
     }
-
 
     public void notifyIfClose(Exam exam){
         if (notifier == null)
