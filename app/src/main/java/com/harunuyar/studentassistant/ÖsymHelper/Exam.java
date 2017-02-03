@@ -7,6 +7,7 @@ public class Exam {
     private String başvuruTarihiLast;
     private String sonuçTarihi;
     private boolean selected;
+    private boolean userCreated;
     
     public Exam(String ad, String sınavTarihi, String başvuruTarihiFirst, String başvuruTarihiLast, String sonuçTarihi){
         this.ad = ad;
@@ -15,6 +16,7 @@ public class Exam {
         this.başvuruTarihiLast = başvuruTarihiLast;
         this.sonuçTarihi = sonuçTarihi;
         this.selected = false;
+        this.userCreated = false;
     }
 
     public String getAd() {
@@ -56,6 +58,10 @@ public class Exam {
     public boolean isSelected() { return selected; }
 
     public void setSelected(boolean selected) { this.selected = selected; }
+
+    public boolean isUserCreated() { return userCreated; }
+
+    public void setUserCreated(boolean userCreated) { this.userCreated = userCreated; }
 
     @Override
     public String toString() {

@@ -1,15 +1,27 @@
 package com.harunuyar.studentassistant.ÖsymHelper;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.harunuyar.studentassistant.MainActivity;
 import com.harunuyar.studentassistant.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -20,12 +32,10 @@ public class ÖsymAdapter extends BaseAdapter {
 
     private Context context;
     private ArrayList<Exam> al;
-    private LayoutInflater inflater = null;
 
     public ÖsymAdapter(Context context, ArrayList<Exam> al) {
         this.context = context;
         this.al = al;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -44,12 +54,11 @@ public class ÖsymAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater vi = (LayoutInflater)context.getSystemService(
-                    Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = vi.inflate(R.layout.item, null);
 
             holder = new ViewHolder();
@@ -59,6 +68,8 @@ public class ÖsymAdapter extends BaseAdapter {
             holder.first = (TextView) convertView.findViewById(R.id.first);
             holder.last = (TextView) convertView.findViewById(R.id.last);
             holder.result = (TextView) convertView.findViewById(R.id.result);
+            holder.delete = (ImageButton) convertView.findViewById(R.id.deleteButton);
+            holder.change = (ImageButton) convertView.findViewById(R.id.changeButton);
             convertView.setTag(holder);
 
             holder.cb.setOnClickListener( new View.OnClickListener() {
@@ -66,6 +77,109 @@ public class ÖsymAdapter extends BaseAdapter {
                     CheckBox cb = (CheckBox) v ;
                     Exam exam = (Exam) cb.getTag();
                     exam.setSelected(cb.isChecked());
+                    saveSelectedExams();
+                    saveUserCreatedExams();
+                }
+            });
+
+            holder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.delete_exam_dialog);
+
+                    Button button2 = (Button) dialog.findViewById(R.id.button2);
+                    Button button3 = (Button) dialog.findViewById(R.id.button3);
+                    TextView title = (TextView) dialog.findViewById(R.id.alertTitle);
+                    TextView message = (TextView) dialog.findViewById(R.id.textViewMessage);
+
+                    message.setText("" + al.get(position).getAd() + "\n\nBu sınavın silinmesini onaylıyor musunuz?");
+                    button2.setText("EVET");
+                    button3.setText("HAYIR");
+                    title.setText("Sınavı Sil");
+                    button2.setVisibility(View.VISIBLE);
+                    button3.setVisibility(View.VISIBLE);
+                    title.setVisibility(View.VISIBLE);
+
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            al.remove(position);
+                            ÖsymAdapter.this.notifyDataSetChanged();
+                            saveUserCreatedExams();
+
+                            dialog.dismiss();
+                        }
+                    });
+
+                    button3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                }
+            });
+
+            holder.change.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.exam_dialog);
+                    final Exam exam = al.get(position);
+
+                    Button button2 = (Button) dialog.findViewById(R.id.button2);
+                    Button button3 = (Button) dialog.findViewById(R.id.button3);
+                    TextView title = (TextView) dialog.findViewById(R.id.alertTitle);
+                    final EditText ad = (EditText) dialog.findViewById(R.id.nameEditText);
+                    final EditText first = (EditText) dialog.findViewById(R.id.FirstEditText);
+                    final EditText last = (EditText) dialog.findViewById(R.id.LastEditText);
+                    final EditText tarih = (EditText) dialog.findViewById(R.id.sınavEditText);
+                    final EditText sonuç = (EditText) dialog.findViewById(R.id.sonuçEditText);
+
+                    ad.setText(exam.getAd());
+                    first.setText(exam.getBaşvuruTarihiFirst());
+                    last.setText(exam.getBaşvuruTarihiLast());
+                    tarih.setText(exam.getSınavTarihi());
+                    sonuç.setText(exam.getSonuçTarihi());
+                    button2.setText("KAYDET");
+                    button3.setText("İPTAL");
+                    title.setText("Sınavı Güncelle");
+                    button2.setVisibility(View.VISIBLE);
+                    button3.setVisibility(View.VISIBLE);
+                    title.setVisibility(View.VISIBLE);
+
+                    button2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (!ad.getText().toString().equals("")) {
+                                exam.setAd(ad.getText().toString());
+                                exam.setBaşvuruTarihiFirst(first.getText().toString());
+                                exam.setBaşvuruTarihiLast(last.getText().toString());
+                                exam.setSınavTarihi(tarih.getText().toString());
+                                exam.setSonuçTarihi(sonuç.getText().toString());
+                                ÖsymAdapter.this.notifyDataSetChanged();
+
+                                saveUserCreatedExams();
+
+                                dialog.dismiss();
+                            }
+                            else{
+                                Toast.makeText(context, "Sınav adı boş bırakılamaz.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                    button3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
                 }
             });
         }
@@ -81,7 +195,14 @@ public class ÖsymAdapter extends BaseAdapter {
         holder.result.setText(exam.getSonuçTarihi());
         holder.cb.setChecked(exam.isSelected());
         holder.cb.setTag(exam);
-
+        if (exam.isUserCreated()) {
+            holder.delete.setVisibility(View.VISIBLE);
+            holder.change.setVisibility(View.VISIBLE);
+        }
+        else{
+            holder.delete.setVisibility(View.GONE);
+            holder.change.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
@@ -92,10 +213,44 @@ public class ÖsymAdapter extends BaseAdapter {
         TextView last;
         TextView result;
         CheckBox cb;
+        ImageButton delete;
+        ImageButton change;
     }
 
     public ArrayList<Exam> getArrayList(){
         return al;
+    }
+
+    public void setArrayList(ArrayList<Exam> al) {
+        this.al = al;
+    }
+
+    public void saveUserCreatedExams(){
+        ArrayList<Exam> userCreatedExams = new ArrayList<>();
+
+        for (Exam e : al) {
+            if (e.isUserCreated()) {
+                userCreatedExams.add(e);
+            }
+        }
+
+        try {
+            MainActivity.saveUserCreatedExams(context, userCreatedExams);
+        } catch (IOException e) { }
+    }
+
+    public void saveSelectedExams(){
+        ArrayList<Exam> selectedExams = new ArrayList<>();
+
+        for (Exam e : al) {
+            if (e.isSelected() && !e.isUserCreated()) {
+                selectedExams.add(e);
+            }
+        }
+
+        try {
+            MainActivity.saveSelectedExams(context, selectedExams);
+        } catch (IOException e) { }
     }
 }
 

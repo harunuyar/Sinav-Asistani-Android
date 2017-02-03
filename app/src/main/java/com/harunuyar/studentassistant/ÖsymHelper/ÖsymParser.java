@@ -22,11 +22,13 @@ public class ÖsymParser {
             for (Element e: Jsoup.connect(link).get().select("div.table > div.row")){
                 String[] firstLast = e.select("div.col-sm-2").get(1).text().split(" ");
                 String lastApp = (firstLast.length == 2) ? firstLast[1] : firstLast[2];
-                al.add(new Exam(e.select("div.col-sm-6").first().text(), 
-                                e.select("div.col-sm-2").get(0).text().split(" ")[0], 
-                                e.select("div.col-sm-2").get(1).text().split(" ")[0],
-                                lastApp, 
-                                e.select("div.col-sm-2").get(2).text().split(" ")[0]));
+                Exam exam = new Exam(e.select("div.col-sm-6").first().text(),
+                        e.select("div.col-sm-2").get(0).text().split(" ")[0],
+                        e.select("div.col-sm-2").get(1).text().split(" ")[0],
+                        lastApp,
+                        e.select("div.col-sm-2").get(2).text().split(" ")[0]);
+                exam.setUserCreated(false);
+                al.add(exam);
             }
         } catch (Exception ex) {
             throw ex;

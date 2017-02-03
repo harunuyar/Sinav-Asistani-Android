@@ -31,14 +31,13 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:text="İlk başvuru: "
@@ -137,6 +136,34 @@
                         android:fontFamily="sans-serif" />
 
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:layout_width="40dip"
+                        app:srcCompat="@drawable/delete"
+                        android:id="@+id/deleteButton"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@android:color/transparent"
+                        android:visibility="gone"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="40dip" />
+
+                    <ImageButton
+                        android:layout_width="40dip"
+                        app:srcCompat="@drawable/change"
+                        android:id="@+id/changeButton"
+                        android:scaleType="centerCrop"
+                        android:backgroundTint="@android:color/transparent"
+                        android:visibility="gone"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="40dip"
+                        android:layout_toLeftOf="@+id/deleteButton" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         </LinearLayout>

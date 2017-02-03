@@ -40,11 +40,11 @@ public class HelpActivity extends AppCompatActivity {
 
         TextView help = (TextView) findViewById(R.id.textViewHelp);
 
-        String str =
-                "• Sınav Asistanı, sınavlarınız için bir hatırlatma aracıdır.\n" +
-                        "• Sınavların başvuru tarihlerini, sınav tarihlerini ve sonuç tarihlerini bir hafta ve bir gün önceden bildirim yoluyla haber verir.\n" +
-                        "• Program, ÖSYM'nin sitesine bağlanıp sınavları ve tarihlerini güncel olarak alır ve listeler.\n" +
-                        "• Bildirim almak istediğiniz sınavları seçtikten sonra seçiminizi kaydetmeniz, bildirim almanız için yeterlidir.\n" +
+        String str ="• Sınav Asistanı, sınavlarınız için bir hatırlatma aracıdır.\n" +
+                        "• Sınavların başvuru tarihlerini, sınav tarihlerini ve sonuç tarihlerini bir hafta ve bir gün önceden bildirir.\n" +
+                        "• ÖSYM'nin sitesine bağlanıp sınavları ve tarihlerini güncel olarak alabileceğiniz " +
+                                                                "gibi kendi sınavlarınızı da ayrıca ekleyebilirsiniz.\n" +
+                        "• Bildirim almak istediğiniz sınavları seçmeniz, bildirim almanız için yeterlidir.\n" +
                         "\n\n" +
                         "Harun Uyar";
 
