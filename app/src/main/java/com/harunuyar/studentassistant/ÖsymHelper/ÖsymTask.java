@@ -2,7 +2,6 @@ package com.harunuyar.studentassistant.ÖsymHelper;
 
 import android.app.Activity;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,11 +13,11 @@ public class ÖsymTask extends AsyncTask<Activity, Integer, ArrayList<Exam>> {
     @Override
     protected ArrayList<Exam> doInBackground(Activity... params) {
         ArrayList<Exam> al = null;
+
         try {
             al = ÖsymParser.getParser().getList();
-        } catch (Exception e) {
+        } catch (Exception e) { }
 
-        }
         return al;
     }
 }

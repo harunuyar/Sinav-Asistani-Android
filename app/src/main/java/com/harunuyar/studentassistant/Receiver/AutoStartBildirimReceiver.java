@@ -3,7 +3,7 @@ package com.harunuyar.studentassistant.Receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.harunuyar.studentassistant.MainActivity;
+import com.harunuyar.studentassistant.Constants;
 
 /**
  * Created by Harun on 30.01.2017.
@@ -14,7 +14,7 @@ public class AutoStartBildirimReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if(intent.getAction().equals(BOOT_COMPLETED_ACTION)) {
-            MainActivity.setScheduler(context);
+            Constants.setScheduler(context);
         }
     }
 }

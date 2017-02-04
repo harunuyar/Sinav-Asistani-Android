@@ -4,7 +4,6 @@ import android.content.Context;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-
 public class CsvWriter {
 
     private String fileName;

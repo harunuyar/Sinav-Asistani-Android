@@ -65,44 +65,52 @@
         android:gravity="bottom"
         android:layout_alignParentBottom="true">
 
-        <RelativeLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="2dip"
+            app:srcCompat="@android:color/background_light"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2dip"
-                app:srcCompat="@android:color/background_light"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
             <ImageButton
                 app:srcCompat="@drawable/add"
                 android:id="@+id/addButton"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:backgroundTint="@android:color/transparent"
-                android:layout_width="70dip"
                 android:layout_height="70dip"
-                android:layout_alignParentLeft="true" />
+                android:layout_width="0dp"
+                android:layout_weight="1" />
 
             <ImageButton
                 app:srcCompat="@drawable/check"
                 android:id="@+id/checkButton"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
                 android:backgroundTint="@android:color/transparent"
-                android:layout_width="70dip"
                 android:layout_height="70dip"
-                android:layout_alignParentLeft="false"
-                android:layout_centerHorizontal="true" />
+                android:layout_width="0dp"
+                android:layout_weight="1" />
 
             <ImageButton
-                android:layout_width="70dip"
+                android:layout_height="70dip"
+                app:srcCompat="@drawable/settings"
+                android:id="@+id/settingsButton"
+                android:backgroundTint="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
                 android:layout_height="70dip"
                 app:srcCompat="@drawable/help"
                 android:id="@+id/helpButton"
                 android:backgroundTint="@android:color/transparent"
-                android:scaleType="centerCrop"
-                android:layout_gravity="right"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
+                android:scaleType="centerInside"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -1,16 +1,10 @@
 package com.harunuyar.studentassistant;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.lang.reflect.Method;
 
 public class HelpActivity extends AppCompatActivity {
 
@@ -19,24 +13,7 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = getWindow();
-
-            try {
-                int FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS = 0x80000000;
-                window.addFlags(FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-                Class<?> cls = window.getClass();
-                Method method = cls.getDeclaredMethod("setStatusBarColor",
-                        new Class<?>[] { Integer.TYPE });
-
-                method.invoke(window, Color.rgb(51,181,229));
-
-            } catch (Exception e) {
-
-            }
-        }
+        Constants.setStatusBarColor(getWindow());
 
         TextView help = (TextView) findViewById(R.id.textViewHelp);
 

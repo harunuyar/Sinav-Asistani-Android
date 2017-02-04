@@ -1,6 +1,5 @@
 package com.harunuyar.studentassistant.ÖsymHelper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -28,6 +27,7 @@ public class ÖsymParser {
                         lastApp,
                         e.select("div.col-sm-2").get(2).text().split(" ")[0]);
                 exam.setUserCreated(false);
+                exam.setSelected(false);
                 al.add(exam);
             }
         } catch (Exception ex) {

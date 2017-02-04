@@ -6,13 +6,10 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
-
+import com.harunuyar.studentassistant.Constants;
 import com.harunuyar.studentassistant.MainActivity;
 import com.harunuyar.studentassistant.R;
 
@@ -25,8 +22,7 @@ public class BildirimNotifier extends Notifier {
     private Context context;
     private int notificationID;
 
-    public BildirimNotifier(boolean aDayAgo, boolean aWeekAgo, Context context) {
-        super(aDayAgo, aWeekAgo);
+    public BildirimNotifier(@NonNull Context context) {
         this.context = context;
         notificationID = 0;
     }
@@ -45,7 +41,8 @@ public class BildirimNotifier extends Notifier {
 
             mBuilder.setContentTitle("Sınav Asistanı");
             mBuilder.setContentText(bildirim.getTexts()[0]);
-            mBuilder.setSmallIcon(R.drawable.today);
+            mBuilder.setColor(Constants.MAINCOLOR);
+            mBuilder.setSmallIcon(R.drawable.smallicon);
             mBuilder.setLargeIcon(BitmapFactory.decodeResource( context.getResources(), R.mipmap.ic_launcher));
             mBuilder.setAutoCancel(true);
             mBuilder.setDefaults(Notification.DEFAULT_LIGHTS);

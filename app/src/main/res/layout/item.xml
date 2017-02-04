@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/checkBox"
             android:checked="false"
-            app:buttonTint="@android:color/white" />
+            android:buttonTint="@android:color/white" />
 
         <LinearLayout
             android:orientation="vertical"

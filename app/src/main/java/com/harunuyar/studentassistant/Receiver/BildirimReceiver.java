@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import com.harunuyar.studentassistant.CsvHelper.CsvReader;
+import com.harunuyar.studentassistant.Constants;
 import com.harunuyar.studentassistant.Notifier.Bildirim;
 import com.harunuyar.studentassistant.Notifier.BildirimNotifier;
 import com.harunuyar.studentassistant.Notifier.Notifier;
@@ -21,46 +21,27 @@ import java.util.Date;
 
 public class BildirimReceiver extends BroadcastReceiver {
     Notifier notifier;
-    ArrayList<Exam> selectedExams;
+    ArrayList<Exam> examsToBeNotified;
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        notifier = new BildirimNotifier(true, true, context);
-        selectedExams = new ArrayList<>();
+        Constants.loadNotificationDetails(context);
 
-        try {
-            CsvReader csvReader = new CsvReader("selected.csv", context);
+        notifier = new BildirimNotifier(context);
+        examsToBeNotified = new ArrayList<>();
 
-            String[] s;
-
-            while ((s = csvReader.readNext()) != null) {
-                Exam e = new Exam(s[0], s[1], s[2], s[3], s[4]);
-                e.setSelected(true);
-                selectedExams.add(e);
+        examsToBeNotified.addAll(Constants.loadSelectedExams(context));
+        for (Exam e : Constants.loadUserCreatedExams(context)) {
+            if (e.isSelected()) {
+                examsToBeNotified.add(e);
             }
         }
-        catch (Exception ex) { }
 
-        try {
-            CsvReader csvReader = new CsvReader("user_created.csv", context);
+        String controlMessage = intent.getAction().equals(Constants.MANUAL_INTENT) ? "Manuel kontrol yapıldı.\n" : "Otomatik kontrol yapıldı.\n";
+        Toast.makeText(context, controlMessage + examsToBeNotified.size() + " sınav kontrol edildi.", Toast.LENGTH_SHORT).show();
 
-            String[] s;
-
-            while ((s = csvReader.readNext()) != null) {
-                Exam e = new Exam(s[0], s[1], s[2], s[3], s[4]);
-                if (s[5].equals("true")) {
-                    e.setSelected(true);
-                    selectedExams.add(e);
-                }
-            }
-        }
-        catch (Exception ex) { }
-
-        String string = intent.getAction().equals("MANUAL") ? "Manuel kontrol yapıldı.\n" : "Otomatik kontrol yapıldı.\n";
-        Toast.makeText(context, string + selectedExams.size() + " sınav kontrol edildi.", Toast.LENGTH_SHORT).show();
-
-        for (Exam e : selectedExams){
+        for (Exam e : examsToBeNotified){
             notifyIfClose(e);
         }
     }
@@ -81,7 +62,7 @@ public class BildirimReceiver extends BroadcastReceiver {
             long diffExam = dateExam.getTime() - today.getTime();
             diffExam /= (24 * 60 * 60 * 1000);
 
-            if (diffExam == 1 && notifier.isaDayAgo()){
+            if (diffExam == 1 && Constants.NOTIFY_A_DAY_AGO){
                 String text = "Yarın sınavınız var!";
 
                 try {
@@ -92,7 +73,7 @@ public class BildirimReceiver extends BroadcastReceiver {
                     System.out.println(ex.getMessage());
                 }
             }
-            else if (diffExam == 7 && notifier.isaWeekAgo()){
+            else if (diffExam == 7 && Constants.NOTIFY_A_WEEK_AGO){
                 String text = "Haftaya sınavınız var!";
 
                 try {
@@ -111,7 +92,7 @@ public class BildirimReceiver extends BroadcastReceiver {
             long diffFirst = dateFirst.getTime() - today.getTime();
             diffFirst /= (24 * 60 * 60 * 1000);
 
-            if (diffFirst == 1 && notifier.isaDayAgo()){
+            if (diffFirst == 1 && Constants.NOTIFY_A_DAY_AGO){
                 String text = "Yarın sınav başvuruları başlıyor!";
 
                 try {
@@ -122,7 +103,7 @@ public class BildirimReceiver extends BroadcastReceiver {
                     System.out.println(ex.getMessage());
                 }
             }
-            else if (diffFirst == 7 && notifier.isaWeekAgo())
+            else if (diffFirst == 7 && Constants.NOTIFY_A_WEEK_AGO)
             {
                 String text = "Haftaya sınav başvuruları başlıyor!";
 
@@ -142,7 +123,7 @@ public class BildirimReceiver extends BroadcastReceiver {
             long diffLast = dateLast.getTime() - today.getTime();
             diffLast /= (24 * 60 * 60 * 1000);
 
-            if (diffLast == 1 && notifier.isaDayAgo()){
+            if (diffLast == 1 && Constants.NOTIFY_A_DAY_AGO){
                 String text = "Yarın sınav başvuruları sona eriyor!";
 
                 try {
@@ -153,7 +134,7 @@ public class BildirimReceiver extends BroadcastReceiver {
                     System.out.println(ex.getMessage());
                 }
             }
-            else if (diffLast == 7 && notifier.isaWeekAgo())
+            else if (diffLast == 7 && Constants.NOTIFY_A_WEEK_AGO)
             {
                 String text = "Haftaya sınav başvuruları sona eriyor!";
 
@@ -173,7 +154,7 @@ public class BildirimReceiver extends BroadcastReceiver {
             long diffResult = dateResult.getTime() - today.getTime();
             diffResult /= (24 * 60 * 60 * 1000);
 
-            if (diffResult == 1 && notifier.isaDayAgo()){
+            if (diffResult == 1 && Constants.NOTIFY_A_DAY_AGO){
                 String text = "Yarın sınav sonuçları açıklanıyor!";
 
                 try {
@@ -184,7 +165,7 @@ public class BildirimReceiver extends BroadcastReceiver {
                     System.out.println(ex.getMessage());
                 }
             }
-            else if (diffResult == 7 && notifier.isaWeekAgo())
+            else if (diffResult == 7 && Constants.NOTIFY_A_WEEK_AGO)
             {
                 String text = "Haftaya sınav sonuçları açıklanıyor!";
 
