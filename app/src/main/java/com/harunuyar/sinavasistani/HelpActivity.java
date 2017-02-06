@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant;
+package com.harunuyar.sinavasistani;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

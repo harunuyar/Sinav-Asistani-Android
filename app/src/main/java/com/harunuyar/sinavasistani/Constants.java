@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant;
+package com.harunuyar.sinavasistani;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,11 +10,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.harunuyar.studentassistant.CsvHelper.CsvReader;
-import com.harunuyar.studentassistant.CsvHelper.CsvWriter;
-import com.harunuyar.studentassistant.Receiver.BildirimReceiver;
-import com.harunuyar.studentassistant.ÖsymHelper.Exam;
-import com.harunuyar.studentassistant.ÖsymHelper.ÖsymAdapter;
+import com.harunuyar.sinavasistani.CsvHelper.CsvReader;
+import com.harunuyar.sinavasistani.CsvHelper.CsvWriter;
+import com.harunuyar.sinavasistani.Receiver.BildirimReceiver;
+import com.harunuyar.sinavasistani.ÖsymHelper.Exam;
+import com.harunuyar.sinavasistani.ÖsymHelper.ÖsymAdapter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

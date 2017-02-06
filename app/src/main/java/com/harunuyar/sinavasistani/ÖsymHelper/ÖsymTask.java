@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.ÖsymHelper;
+package com.harunuyar.sinavasistani.ÖsymHelper;
 
 import android.app.Activity;
 import android.os.AsyncTask;

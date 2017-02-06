@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.Notifier;
+package com.harunuyar.sinavasistani.Notifier;
 
 public class Bildirim {
     private String[] texts;

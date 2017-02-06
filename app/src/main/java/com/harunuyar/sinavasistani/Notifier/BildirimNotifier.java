@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.Notifier;
+package com.harunuyar.sinavasistani.Notifier;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
-import com.harunuyar.studentassistant.Constants;
-import com.harunuyar.studentassistant.MainActivity;
-import com.harunuyar.studentassistant.R;
+import com.harunuyar.sinavasistani.Constants;
+import com.harunuyar.sinavasistani.MainActivity;
+import com.harunuyar.sinavasistani.R;
 
 /**
  * Created by Harun on 25.01.2017.

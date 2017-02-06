@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.CsvHelper;
+package com.harunuyar.sinavasistani.CsvHelper;
 
 import android.content.Context;
 import java.io.BufferedReader;

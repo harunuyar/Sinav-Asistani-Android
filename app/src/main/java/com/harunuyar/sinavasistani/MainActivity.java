@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant;
+package com.harunuyar.sinavasistani;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -12,10 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.harunuyar.studentassistant.Receiver.BildirimReceiver;
-import com.harunuyar.studentassistant.ÖsymHelper.ÖsymTask;
-import com.harunuyar.studentassistant.ÖsymHelper.Exam;
-import com.harunuyar.studentassistant.ÖsymHelper.ÖsymAdapter;
+import com.harunuyar.sinavasistani.Receiver.BildirimReceiver;
+import com.harunuyar.sinavasistani.ÖsymHelper.ÖsymTask;
+import com.harunuyar.sinavasistani.ÖsymHelper.Exam;
+import com.harunuyar.sinavasistani.ÖsymHelper.ÖsymAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (!ad.getText().toString().equals("")) {
                             Exam exam = new Exam(ad.getText().toString(),
+                                    tarih.getText().toString(),
                                     first.getText().toString(),
                                     last.getText().toString(),
-                                    tarih.getText().toString(),
                                     sonuç.getText().toString());
 
                             exam.setUserCreated(true);

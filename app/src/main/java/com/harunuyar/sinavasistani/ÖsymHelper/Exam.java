@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.ÖsymHelper;
+package com.harunuyar.sinavasistani.ÖsymHelper;
 
 public class Exam {
     private String ad;

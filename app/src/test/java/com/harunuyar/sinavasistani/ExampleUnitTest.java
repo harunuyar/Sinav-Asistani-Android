@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant;
+package com.harunuyar.sinavasistani;
 
 import org.junit.Test;
 

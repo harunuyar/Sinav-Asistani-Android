@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant;
+package com.harunuyar.sinavasistani;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

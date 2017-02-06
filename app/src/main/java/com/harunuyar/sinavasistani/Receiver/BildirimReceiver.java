@@ -1,14 +1,14 @@
-package com.harunuyar.studentassistant.Receiver;
+package com.harunuyar.sinavasistani.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-import com.harunuyar.studentassistant.Constants;
-import com.harunuyar.studentassistant.Notifier.Bildirim;
-import com.harunuyar.studentassistant.Notifier.BildirimNotifier;
-import com.harunuyar.studentassistant.Notifier.Notifier;
-import com.harunuyar.studentassistant.ÖsymHelper.Exam;
+import com.harunuyar.sinavasistani.Constants;
+import com.harunuyar.sinavasistani.Notifier.Bildirim;
+import com.harunuyar.sinavasistani.Notifier.BildirimNotifier;
+import com.harunuyar.sinavasistani.Notifier.Notifier;
+import com.harunuyar.sinavasistani.ÖsymHelper.Exam;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

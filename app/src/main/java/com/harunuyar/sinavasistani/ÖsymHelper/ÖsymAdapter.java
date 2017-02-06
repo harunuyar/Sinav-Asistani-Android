@@ -1,4 +1,4 @@
-package com.harunuyar.studentassistant.ÖsymHelper;
+package com.harunuyar.sinavasistani.ÖsymHelper;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.harunuyar.studentassistant.Constants;
-import com.harunuyar.studentassistant.R;
+import com.harunuyar.sinavasistani.Constants;
+import com.harunuyar.sinavasistani.R;
 import java.io.IOException;
 import java.util.ArrayList;
 

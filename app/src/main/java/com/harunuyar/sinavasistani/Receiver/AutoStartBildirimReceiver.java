@@ -1,9 +1,9 @@
-package com.harunuyar.studentassistant.Receiver;
+package com.harunuyar.sinavasistani.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.harunuyar.studentassistant.Constants;
+import com.harunuyar.sinavasistani.Constants;
 
 /**
  * Created by Harun on 30.01.2017.
