@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/checkBox"
             android:checked="false"
-            android:buttonTint="@android:color/white" />
+            android:buttonTint="@color/colorSecondary" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -146,9 +146,9 @@
                         app:srcCompat="@drawable/delete"
                         android:id="@+id/deleteButton"
                         android:scaleType="centerCrop"
-                        android:backgroundTint="@android:color/transparent"
+                        android:backgroundTint="#00000000"
                         android:visibility="gone"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_height="40dip" />
 
@@ -157,11 +157,11 @@
                         app:srcCompat="@drawable/change"
                         android:id="@+id/changeButton"
                         android:scaleType="centerCrop"
-                        android:backgroundTint="@android:color/transparent"
+                        android:backgroundTint="#00000000"
                         android:visibility="gone"
-                        android:layout_alignParentBottom="true"
                         android:layout_height="40dip"
-                        android:layout_toLeftOf="@+id/deleteButton" />
+                        android:layout_alignParentBottom="true"
+                        android:layout_toStartOf="@+id/deleteButton" />
                 </RelativeLayout>
 
             </LinearLayout>

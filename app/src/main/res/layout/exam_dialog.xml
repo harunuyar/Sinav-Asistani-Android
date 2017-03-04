@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@android:color/white">
+    android:background="@color/colorSecondary">
 
     <LinearLayout
         android:id="@+id/topPanel"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:minHeight="48dip"
         android:orientation="vertical"
-        android:background="@android:color/holo_blue_light">
+        android:background="@color/colorAccent">
 
         <LinearLayout android:id="@+id/title_template"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Notification.Title"
                 android:fontFamily="sans-serif"
                 android:textSize="20sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/colorSecondary" />
 
         </LinearLayout>
 
@@ -67,7 +67,7 @@
                     android:text="Sınav Adı:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/holo_blue_light"
+                    android:textColor="@color/colorAccent"
                     android:textSize="16sp" />
 
                 <EditText
@@ -76,10 +76,10 @@
                     android:inputType="text|textCapWords|textAutoCorrect"
                     android:ems="10"
                     android:id="@+id/nameEditText"
-                    android:textColor="@android:color/holo_blue_light"
-                    android:backgroundTint="@android:color/holo_blue_light"
+                    android:textColor="@color/colorAccent"
+                    android:backgroundTint="@color/colorAccent"
                     android:textSize="14sp"
-                    android:textColorLink="@android:color/holo_blue_light"
+                    android:textColorLink="@color/colorAccent"
                     android:textCursorDrawable="?android:attr/textCursorDrawable" />
 
                 <LinearLayout
@@ -88,10 +88,10 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:text="İlk Başvuru Tarihi:"
+                        android:text="İlk Başvuru:"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
                         android:textSize="16sp"
                         android:layout_weight="1" />
 
@@ -101,11 +101,11 @@
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/FirstEditText"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:backgroundTint="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
+                        android:backgroundTint="@color/colorAccent"
                         android:textSize="14sp"
                         android:layout_weight="1"
-                        android:textColorLink="@android:color/holo_blue_light"
+                        android:textColorLink="@color/colorAccent"
                         android:textCursorDrawable="?android:attr/textCursorDrawable" />
 
                 </LinearLayout>
@@ -116,10 +116,10 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:text="Son Başvuru Tarihi:"
+                        android:text="Son Başvuru:"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
                         android:textSize="16sp"
                         android:layout_weight="1" />
 
@@ -129,11 +129,11 @@
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/LastEditText"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:backgroundTint="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
+                        android:backgroundTint="@color/colorAccent"
                         android:textSize="14sp"
                         android:layout_weight="1"
-                        android:textColorLink="@android:color/holo_blue_light"
+                        android:textColorLink="@color/colorAccent"
                         android:textCursorDrawable="?android:attr/textCursorDrawable" />
                 </LinearLayout>
 
@@ -146,7 +146,7 @@
                         android:text="Sınav Tarihi:"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
                         android:textSize="16sp"
                         android:layout_weight="1" />
 
@@ -156,11 +156,11 @@
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/sınavEditText"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:backgroundTint="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
+                        android:backgroundTint="@color/colorAccent"
                         android:textSize="14sp"
                         android:layout_weight="1"
-                        android:textColorLink="@android:color/holo_blue_light"
+                        android:textColorLink="@color/colorAccent"
                         android:textCursorDrawable="?android:attr/textCursorDrawable" />
                 </LinearLayout>
 
@@ -173,7 +173,7 @@
                         android:text="Sonuç Tarihi:"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
                         android:textSize="16sp"
                         android:layout_weight="1" />
 
@@ -183,11 +183,11 @@
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/sonuçEditText"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:backgroundTint="@android:color/holo_blue_light"
+                        android:textColor="@color/colorAccent"
+                        android:backgroundTint="@color/colorAccent"
                         android:textSize="14sp"
                         android:layout_weight="1"
-                        android:textColorLink="@android:color/holo_blue_light"
+                        android:textColorLink="@color/colorAccent"
                         android:textCursorDrawable="?android:attr/textCursorDrawable" />
                 </LinearLayout>
 
@@ -205,8 +205,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="4dip"
-            android:paddingLeft="24dip"
-            android:paddingRight="18dip"
+            android:paddingStart="24dip"
+            android:paddingEnd="18dip"
             android:measureWithLargestChild="true">
             <LinearLayout android:id="@+id/leftSpacer"
                 android:layout_weight="0.8"
@@ -214,14 +214,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:visibility="visible" />
-            <Button android:id="@+id/button1"
-                android:layout_width="0dip"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                style="?android:attr/buttonBarButtonStyle"
-                android:maxLines="2"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_blue_light" />
             <Button android:id="@+id/button3"
                 android:layout_width="0dip"
                 android:layout_gravity="center_horizontal"
@@ -229,7 +221,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:maxLines="2"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_blue_light" />
+                android:textColor="@color/colorAccent" />
             <Button android:id="@+id/button2"
                 android:layout_width="0dip"
                 android:layout_gravity="right"
@@ -237,13 +229,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:maxLines="2"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_blue_light" />
-            <LinearLayout android:id="@+id/rightSpacer"
-                android:layout_width="0dip"
-                android:layout_weight="0.25"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:visibility="gone" />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

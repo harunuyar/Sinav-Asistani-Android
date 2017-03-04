@@ -38,7 +38,7 @@ public class BildirimReceiver extends BroadcastReceiver {
             }
         }
 
-        String controlMessage = intent.getAction().equals(Constants.MANUAL_INTENT) ? "Manuel kontrol yapıldı.\n" : "Otomatik kontrol yapıldı.\n";
+        String controlMessage = Constants.MANUAL_INTENT.equals(intent.getAction()) ? "Manuel kontrol yapıldı.\n" : "Otomatik kontrol yapıldı.\n";
         Toast.makeText(context, controlMessage + examsToBeNotified.size() + " sınav kontrol edildi.", Toast.LENGTH_SHORT).show();
 
         for (Exam e : examsToBeNotified){
